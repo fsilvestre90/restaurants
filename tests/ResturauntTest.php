@@ -32,6 +32,22 @@
             $this->assertEquals($test_cuisine, $result[0]);
         }
 
+        function test_getAll()
+        {
+            //Arrange
+            $cuisine = "Pizza";
+            $test_cuisine = new Cuisine($cuisine);
+            $test_cuisine->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([$test_cuisine], $result);
+
+
+        }
+
 
     }
 ?>
