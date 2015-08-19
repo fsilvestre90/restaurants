@@ -76,5 +76,22 @@
             //Assert
             $this->assertEquals($test_cuisine, $result);
         }
+
+        function test_update()
+        {
+            //Arrange
+            $cuisine = "Pizza";
+            $test_cuisine = new Cuisine($cuisine);
+            $test_cuisine->save();
+
+            //Act
+            $result = Cuisine::find($test_cuisine->getID());
+            $result->setCuisineType("Burgers");
+            $result->update();
+            $result = $result->getCuisineType();
+            
+            //Assert
+            $this->assertEquals("Burgers", $result);
+        }
     }
 ?>
