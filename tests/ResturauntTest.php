@@ -48,6 +48,33 @@
 
         }
 
+        function test_find()
+        {
+            //Arrange
+            $cuisine = "Pizza";
+            $test_cuisine = new Cuisine($cuisine);
+            $test_cuisine->save();
 
+            //Act
+            $result = Cuisine::find($test_cuisine->getId());
+
+            //Assert
+            $this->assertEquals($test_cuisine, $result);
+        }
+
+        function test_deleteOne()
+        {
+            //Arrange
+            $cuisine = "Pizza";
+            $test_cuisine = new Cuisine($cuisine);
+            $test_cuisine->save();
+
+            //Act
+            $result = Cuisine::find($test_cuisine->getId());
+            $result->deleteOne();
+
+            //Assert
+            $this->assertEquals($test_cuisine, $result);
+        }
     }
 ?>
