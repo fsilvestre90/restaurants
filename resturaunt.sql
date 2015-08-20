@@ -19,17 +19,16 @@ CREATE TABLE `cuisines` (
 );
 
 -- ---
--- Table 'resturaunts'
+-- Table 'restaurants'
 --
 -- ---
 
-DROP TABLE IF EXISTS `resturaunts`;
+DROP TABLE IF EXISTS `restaurants`;
 
-CREATE TABLE `resturaunts` (
+CREATE TABLE `restaurants` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `resturaunt_name` VARCHAR(255) NULL DEFAULT NULL,
+  `restaurant_name` VARCHAR(255) NULL DEFAULT NULL,
   `cuisine_id` INTEGER NULL DEFAULT NULL,
-  `review_id` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -51,11 +50,11 @@ CREATE TABLE `reviews` (
 --
 -- ---
 
-DROP TABLE IF EXISTS `resturaunt_reviews`;
+DROP TABLE IF EXISTS `restaurant_reviews`;
 
-CREATE TABLE `resturaunt_reviews` (
+CREATE TABLE `restaurant_reviews` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `resturaunt_id` INTEGER NULL DEFAULT NULL,
+  `restaurant_id` INTEGER NULL DEFAULT NULL,
   `review_id` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
@@ -64,15 +63,15 @@ CREATE TABLE `resturaunt_reviews` (
 -- Foreign Keys
 -- ---
 
-ALTER TABLE `resturaunts` ADD FOREIGN KEY (cuisine_id) REFERENCES `cuisines` (`id`);
-ALTER TABLE `resturaunt_reviews` ADD FOREIGN KEY (resturaunt_id) REFERENCES `resturaunts` (`id`);
-ALTER TABLE `resturaunt_reviews` ADD FOREIGN KEY (review_id) REFERENCES `reviews` (`id`);
+ALTER TABLE `restaurants` ADD FOREIGN KEY (cuisine_id) REFERENCES `cuisines` (`id`);
+ALTER TABLE `restaurant_reviews` ADD FOREIGN KEY (restaurant_id) REFERENCES `restaurants` (`id`);
+ALTER TABLE `restaurant_reviews` ADD FOREIGN KEY (review_id) REFERENCES `reviews` (`id`);
 
 -- ---
 -- Table Properties
 -- ---
 
 -- ALTER TABLE `cuisines` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `resturaunts` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `restaurants` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `reviews` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `resturaunt_reviews` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `restaurant_reviews` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

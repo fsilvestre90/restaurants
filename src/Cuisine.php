@@ -51,6 +51,7 @@
         }
         return $cuisines;
     }
+    
 
     static function find($search_id)
     {

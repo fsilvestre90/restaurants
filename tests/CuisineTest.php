@@ -89,7 +89,7 @@
             $result->setCuisineType("Burgers");
             $result->update();
             $result = $result->getCuisineType();
-            
+
             //Assert
             $this->assertEquals("Burgers", $result);
         }
