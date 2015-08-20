@@ -2,12 +2,40 @@
 <html>
 <head>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-    <title>Index</title>
+    <title>| Best Restaurants |</title>
 </head>
 <body>
     <div class='container'>
-        <h1>Index</h1>
-        <p>You can start making your web applications!</p>
+        <h1>Best Restaurants</h1>
+        <p>Include a list of your favorite types of food and which restaurants you have been to:</p>
+
+    <div class="form-group">
+        <form action="/cuisines" method="post">
+            <label for="cuisine">Cuisines: </label>
+            <input type="text" name="cuisine" placeholder="cuisine" id="cuisine">
+
+            <button name="submit" class="btn-info">Add Cuisine</button>
+    </div>
+
+    {% if cuisines is not empty %}
+        <p>Here are all your cuisines:</p>
+        <ul>
+            {% for cuisine in cuisines %}
+            <form action="/cuisines" method="post">
+    <input id="cuisine_id" type="hidden" name="cuisine_id" value="{{ cuisine.getId() }}">
+
+            </form>
+
+            <li><a href="/cuisines/{{ cuisine.getId }}">{{ cuisine.getCuisineType }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>There are no cuisines yet!</p>
+        {% endif %}
+
+        <form action='/cuisines' method='post'>
+            <button type='submit'class="btn-info">BLAH</button>
+
     </div>
 </body>
 </html>
