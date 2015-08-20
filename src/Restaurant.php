@@ -67,6 +67,19 @@
               $this->$restaurant_address = $restaurant_address;
           }
 
+          function getReviews() {
+              $reviews = array();
+              $returned_review = $GLOBALS['DB']->query("SELECT * FROM reviews WHERE restaurant_id = {$this->getId()};");
+              foreach($returned_review as $review) {
+                  $review = $review['review'];
+                  $restaurant_id = $review['restaurant_id'];
+                  $new_review = new Review($review, $restaurant_id);
+                  array_push($review, $new_review);
+
+              }
+              return $reviews;
+          }
+
           function save()
           {
               $GLOBALS['DB']->exec("INSERT INTO restaurants (restaurant_name, cuisine_id, restaurant_phone, restaurant_address) VALUES ('{$this->getRestaurantName()}', '{$this->getCuisineId()}', '{$this->getRestaurantPhone()}', '{$this->getRestaurantAddress()}');");
