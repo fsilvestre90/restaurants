@@ -87,7 +87,6 @@
                   $new_restaurant = new Restaurant($restaurant_name, $cuisine_id, $restaurant_phone, $restaurant_address, $id);
                   array_push($restaurants, $new_restaurant);
               }
-              var_dump($restaurants);
               return $restaurants;
           }
 

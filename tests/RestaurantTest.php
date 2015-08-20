@@ -39,6 +39,7 @@
 
         function test_getAll()
         {
+
             //Arrange
 
             $restaurant_name = "Antoons";
@@ -61,39 +62,6 @@
 
             //Assert
             $this->assertEquals([$test_Restaurant, $test_next_Restaurant], $result);
-
-
-        }
-
-        function fest_allRestaurantsInCuisine()
-        {
-            //Arrange
-            $restaurant_name = "Antoons";
-            $cuisine_type = 1;
-            $restaurant_phone = "4128675309";
-            $restaurant_address = "123 Atwood St";
-            $test_Restaurant = new Restaurant($restaurant_name, $cuisine_type, $restaurant_phone, $restaurant_address);
-            $test_Restaurant->save();
-
-
-            $restaurant_name = "Spankys";
-            $cuisine_type = 2;
-            $restaurant_phone = "8015715713";
-            $restaurant_address = "379 E 3333 S";
-            $test_next_Restaurant = new Restaurant($restaurant_name, $cuisine_type, $restaurant_phone, $restaurant_address);
-            $test_next_Restaurant->save();
-
-            $restaurant_name = "Dave & Busters"
-            $cuisine_type = 1;
-            $restaurant_phone = "44444444";
-            $restaurant_address = "HELL";
-            $test_third_restaurant = new Restaurant($restaurant_name, $cuisine_type, $restaurant_phone, $restaurant_address);
-            $test_third_restaurant->save();
-
-            //Act
-            
-
-            //Assert
 
 
         }

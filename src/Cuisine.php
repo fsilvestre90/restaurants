@@ -51,7 +51,21 @@
         }
         return $cuisines;
     }
-    
+
+    function getRestaurants() {
+        $restaurants = array();
+        $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()};");
+        foreach($returned_restaurants as $restaurant) {
+            $restaurant_name = $restaurant['restaurant_name'];
+            $id = $restaurant['id'];
+            $cuisine_id = $restaurant['cuisine_id'];
+            $restaurant_phone = $restaurant['restaurant_phone'];
+            $restaurant_address = $restaurant['restaurant_address'];
+            $new_restaurant = new Restaurant($restaurant_name, $cuisine_id, $restaurant_phone, $restaurant_address, $id);
+            array_push($restaurants, $new_restaurant);
+        }
+        return $restaurants;
+    }
 
     static function find($search_id)
     {
